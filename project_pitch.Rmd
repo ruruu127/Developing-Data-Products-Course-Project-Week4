@@ -10,7 +10,7 @@ output:
 
 - This presentation is created as the reproducible pitch for Coursera's "Developing Data Products" Week 4 course project.
 - A Shiny app is created where the tooth length of guinea pigs is analyzed based on supplement type and dosage amount.
-- The app can be found [here](), and the relevant codes and files can be found [here](https://github.com/ruruu127/Developing-Data-Products-Course-Project-Week4).
+- The app can be found [here](https://ruzaini-amiraa-roslan.shinyapps.io/Developing-Data-Products-Course-Project-Week4/), and the relevant codes and files can be found [here](https://github.com/ruruu127/Developing-Data-Products-Course-Project-Week4).
 
 ## Data
 
