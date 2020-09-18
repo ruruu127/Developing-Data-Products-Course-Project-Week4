@@ -1,0 +1,56 @@
+---
+title: "Shiny App - Analysis on ToothGrowth Data"
+author: "Ruzaini Amiraa Roslan"
+date: "9/18/2020"
+output:
+  slidy_presentation: default
+---
+
+## Introduction
+
+- This presentation is created as the reproducible pitch for Coursera's "Developing Data Products" Week 4 course project.
+- A Shiny app is created where the tooth length of guinea pigs is analyzed based on supplement type and dosage amount.
+- The app can be found [here](), and the relevant codes and files can be found [here]().
+
+## Data
+
+- The dataset `ToothGrowth` is loaded from R `datasets` package.
+- The variables are (based on the documentation of the data):
+  - `len` - The tooth length of the guinea pigs
+  - `supp` - Supplement type, whether it is ascorbic acid (coded as `VC`) or orange juice (coded as `OJ`)
+  - `dose` - Dosage amount in milligrams per day
+- A linea regression model is fitted using this data, and any new values are predicted using this model.
+
+## Model Summary
+
+```{r echo=TRUE}
+data("ToothGrowth")
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+model <- lm(len ~ ., data = ToothGrowth)
+summary(model)
+```
+
+## Plots
+
+```{r echo=FALSE}
+library(ggplot2)
+
+ggplot(ToothGrowth, aes(x = supp, y = len, fill = supp)) +
+  geom_boxplot() +
+  labs(x = "Supplement Type", y = "Tooth Length",
+       title = "Tooth Length vs Supplement Type",
+       fill = "Supp.Type")
+
+ggplot(ToothGrowth, aes(x = dose, y = len, fill = dose)) +
+  geom_boxplot() +
+  labs(x = "Dosage", y = "Tooth Length",
+       title = "Tooth Length vs Dosage",
+       fill = "Dosage")
+```
+
+## Prediction for Supplement Type "OJ" and Dosage Amount of 1.0 mg/day
+
+```{r echo=TRUE}
+pred <- predict(model, newdata = data.frame(supp = "OJ", dose = as.factor(1.0)))
+round(pred, 3)
+```
